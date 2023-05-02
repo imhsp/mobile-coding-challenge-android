@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.imhsp.podcastandroid.R
-import com.imhsp.podcastandroid.ui.ui.theme.Typography
+import com.imhsp.podcastandroid.ui.theme.Typography
 
 @Composable
 fun PodcastDetail(onBack: () -> Unit) {

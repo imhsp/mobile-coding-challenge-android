@@ -5,8 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.imhsp.podcastandroid.ui.compose.PodcastApp
-import com.imhsp.podcastandroid.ui.ui.theme.PodcastAndroidTheme
+import com.imhsp.podcastandroid.ui.theme.PodcastAndroidTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

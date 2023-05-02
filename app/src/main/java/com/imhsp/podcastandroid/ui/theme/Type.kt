@@ -1,4 +1,4 @@
-package com.imhsp.podcastandroid.ui.ui.theme
+package com.imhsp.podcastandroid.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
