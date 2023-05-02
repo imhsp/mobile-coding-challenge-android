@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -14,35 +15,56 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.imhsp.podcastandroid.R
+import com.imhsp.podcastandroid.data.model.Podcast
+import com.imhsp.podcastandroid.data.model.Result
 import com.imhsp.podcastandroid.ui.theme.Typography
+import com.imhsp.podcastandroid.ui.viewmodel.PodcastListViewModel
 
 @Composable
-fun PodcastList(onNavigate:() -> Unit){
+fun PodcastList(
+    viewModel: PodcastListViewModel = hiltViewModel(),
+    onNavigate: () -> Unit
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
-            .padding(10.dp)
-            .clickable { onNavigate() },
+            .padding(10.dp),
         color = MaterialTheme.colors.background
     ) {
         Column {
             Text(text = "Podcasts", style = Typography.h5, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(10.dp))
-            for (i in 1..3){
-                ListItem()
+
+            val pagingItems: LazyPagingItems<Result> =
+                viewModel.podcastList.collectAsLazyPagingItems()
+            LazyColumn {
+                items(
+                    count = pagingItems.itemCount,
+                    key = { index ->
+                        val pod = pagingItems[index]
+                        pod?.id ?: ""
+                    }
+                ) { index ->
+                    val pod = pagingItems[index] ?: return@items
+                    ListItem(pod.podcast, onNavigate)
+                }
             }
         }
     }
 }
 
 @Composable
-private fun ListItem() {
+private fun ListItem(pod: Podcast, onNavigate: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 10.dp)
-            .background(color = Color.Blue),
+            .background(color = Color.Blue)
+            .clickable { onNavigate() },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
@@ -50,8 +72,8 @@ private fun ListItem() {
             contentDescription = "This is image of podcast"
         )
         Column {
-            Text(text = "Podcast title", style = Typography.body1)
-            Text(text = "host", style = Typography.subtitle1)
+            Text(text = pod.titleOriginal, style = Typography.body1)
+            Text(text = pod.publisherOriginal, style = Typography.subtitle1)
             Text(text = "Favourited", style = Typography.caption)
         }
 
