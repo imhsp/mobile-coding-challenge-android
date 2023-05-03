@@ -95,6 +95,7 @@ private fun ItemDetail(uiState: PodcastDetail) {
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
         )
+
         Spacer(modifier = Modifier.size(5.dp))
         Text(
             text = uiState.publisher,
@@ -102,6 +103,7 @@ private fun ItemDetail(uiState: PodcastDetail) {
             color = Color.Gray,
             fontStyle = FontStyle.Italic
         )
+
         Spacer(modifier = Modifier.size(15.dp))
         Image(
             modifier = Modifier
@@ -110,6 +112,7 @@ private fun ItemDetail(uiState: PodcastDetail) {
             painter = rememberAsyncImagePainter(uiState.image),
             contentDescription = "This is image of podcast"
         )
+
         Spacer(modifier = Modifier.size(10.dp))
         Button(
             shape = RoundedCornerShape(10.dp),
@@ -120,6 +123,7 @@ private fun ItemDetail(uiState: PodcastDetail) {
             onClick = { /*TODO*/ }) {
             Text(text = stringResource(id = R.string.favourite), style = Typography.h6)
         }
+
         Spacer(modifier = Modifier.size(10.dp))
         Text(text = uiState.description, style = Typography.body1)
     }
