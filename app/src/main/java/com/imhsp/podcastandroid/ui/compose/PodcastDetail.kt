@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.imhsp.podcastandroid.R
 import com.imhsp.podcastandroid.data.model.PodcastDetail
+import com.imhsp.podcastandroid.ui.compose.util.ErrorPage
 import com.imhsp.podcastandroid.ui.compose.util.Loader
 import com.imhsp.podcastandroid.ui.theme.Typography
 import com.imhsp.podcastandroid.ui.viewmodel.PodcastDetailViewModel
@@ -61,7 +62,9 @@ fun PodcastDetail(
                 }
 
                 is UIDataState.Failure -> {
-
+                    ErrorPage {
+                        viewModel.getPodDetails(id)
+                    }
                 }
             }
         }
