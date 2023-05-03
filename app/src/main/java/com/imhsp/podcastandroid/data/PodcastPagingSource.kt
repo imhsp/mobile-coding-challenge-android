@@ -2,13 +2,13 @@ package com.imhsp.podcastandroid.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.imhsp.podcastandroid.data.model.Result
+import com.imhsp.podcastandroid.data.model.Results
 
 private const val STARTING_PAGE_INDEX = 1
 
-class PodcastPagingSource(private val service: PodcastService) : PagingSource<Int, Result>() {
+class PodcastPagingSource(private val service: PodcastService) : PagingSource<Int, Results>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Results> {
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
             val response = service.getPodcastList(pageSize = params.loadSize)
@@ -24,7 +24,7 @@ class PodcastPagingSource(private val service: PodcastService) : PagingSource<In
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Results>): Int? {
         return state.anchorPosition
     }
 }

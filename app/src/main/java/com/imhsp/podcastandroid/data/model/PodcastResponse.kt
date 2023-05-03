@@ -3,11 +3,11 @@ package com.imhsp.podcastandroid.data.model
 import com.google.gson.annotations.SerializedName
 
 data class PodcastResponse(
-    val results: List<Result>,
+    val results: List<Results>,
     @SerializedName("next_offset") val nextOffset: Int
 )
 
-data class Result(
+data class Results(
     val id: String,
     val podcast: Podcast
 )

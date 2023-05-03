@@ -1,5 +1,6 @@
 package com.imhsp.podcastandroid.data
 
+import com.imhsp.podcastandroid.data.model.PodcastDetail
 import com.imhsp.podcastandroid.data.model.PodcastResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,7 +22,7 @@ interface PodcastService {
     @GET("podcasts/{id}")
     suspend fun getPodcastDetails(
         @Path("id") id: String
-    ): PodcastResponse
+    ): PodcastDetail
 
     companion object {
         private const val BASE_URL = "https://listen-api-test.listennotes.com/api/v2/"

@@ -10,11 +10,11 @@ fun PodcastApp(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "list") {
         composable("list") {
             PodcastList {
-                navController.navigate("detail")
+                navController.navigate("detail/$it")
             }
         }
-        composable("detail") {
-            PodcastDetail {
+        composable("detail/{id}") { backStackEntry ->
+            PodcastDetail(backStackEntry.arguments?.getString("id")) {
                 navController.popBackStack()
             }
         }
