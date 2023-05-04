@@ -2,6 +2,7 @@
     <string name="app_name">Podcast Android</string>
     <string name="title_activity_main">Podcast Android</string>
     <string name="favourite">Favourite</string>
+    <string name="favourited">Favourited</string>
     <string name="back">Back</string>
     <string name="retry">Try again!</string>
     <string name="error_message">Something went wrong!</string>

@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -27,6 +28,7 @@ import com.imhsp.podcastandroid.ui.compose.util.ErrorPage
 import com.imhsp.podcastandroid.ui.compose.util.Loader
 import com.imhsp.podcastandroid.ui.theme.Typography
 import com.imhsp.podcastandroid.ui.viewmodel.PodcastListViewModel
+import com.imhsp.podcastandroid.R
 
 @Composable
 fun PodcastList(
@@ -100,7 +102,13 @@ private fun ListItem(pod: Podcast, onNavigate: (id: String) -> Unit) {
                 color = Color.Gray,
                 fontStyle = FontStyle.Italic
             )
-            Text(text = "Favourited", style = Typography.subtitle1, color = Color.Red)
+            if (pod.isFavourite) {
+                Text(
+                    text = stringResource(id = R.string.favourited),
+                    style = Typography.subtitle1,
+                    color = Color.Red
+                )
+            }
         }
     }
     Spacer(modifier = Modifier.height(5.dp))

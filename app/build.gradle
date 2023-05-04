@@ -84,6 +84,10 @@ dependencies {
     // Dependency for Image loader
     implementation 'io.coil-kt:coil-compose:2.0.0-rc01'
 
+    // Dependency for Room Database
+    implementation 'androidx.room:room-ktx:2.5.1'
+    kapt 'androidx.room:room-compiler:2.5.1'
+
     // Dependencies for Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

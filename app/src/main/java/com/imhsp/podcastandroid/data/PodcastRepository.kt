@@ -10,12 +10,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class PodcastRepository @Inject constructor(private val service: PodcastService) {
+class PodcastRepository @Inject constructor(
+    private val service: PodcastService,
+    private val favoriteDAO: FavouriteDAO
+) {
 
     fun getPodcastItems(): Flow<PagingData<Results>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
-            pagingSourceFactory = { PodcastPagingSource(service) }
+            pagingSourceFactory = { PodcastPagingSource(service, favoriteDAO) }
         ).flow
     }
 

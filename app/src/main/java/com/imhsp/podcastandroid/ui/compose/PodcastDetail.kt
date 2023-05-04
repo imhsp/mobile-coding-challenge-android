@@ -42,6 +42,7 @@ fun PodcastDetail(
     }
 
     val uiState by viewModel.podDetails.observeAsState(UIDataState.Loading)
+    val favouriteState by viewModel.favourite.observeAsState(false)
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -68,7 +69,14 @@ fun PodcastDetail(
                 }
 
                 is UIDataState.Success -> {
-                    ItemDetail((uiState as UIDataState.Success).podcastDetail)
+                    val podDetails = (uiState as UIDataState.Success).podcastDetail
+                    ItemDetail(podDetails, favouriteState) {
+                        if (favouriteState) {
+                            viewModel.removeFavourite(id)
+                        } else {
+                            viewModel.setFavourite(id)
+                        }
+                    }
                 }
 
                 is UIDataState.Failure -> {
@@ -82,7 +90,11 @@ fun PodcastDetail(
 }
 
 @Composable
-private fun ItemDetail(uiState: PodcastDetail) {
+private fun ItemDetail(
+    uiState: PodcastDetail,
+    favouriteState: Boolean,
+    onFavouriteClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -120,8 +132,12 @@ private fun ItemDetail(uiState: PodcastDetail) {
                 backgroundColor = Color.Magenta,
                 contentColor = Color.White
             ),
-            onClick = { /*TODO*/ }) {
-            Text(text = stringResource(id = R.string.favourite), style = Typography.h6)
+            onClick = onFavouriteClick
+        ) {
+            Text(
+                text = stringResource(id = if (favouriteState) R.string.favourited else R.string.favourite),
+                style = Typography.h6
+            )
         }
 
         Spacer(modifier = Modifier.size(10.dp))

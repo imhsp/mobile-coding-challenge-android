@@ -16,5 +16,6 @@ data class Podcast(
     val id: String,
     val thumbnail: String,
     @SerializedName("title_original") val titleOriginal: String,
-    @SerializedName("publisher_original") val publisherOriginal: String
+    @SerializedName("publisher_original") val publisherOriginal: String,
+    var isFavourite: Boolean = false
 )
