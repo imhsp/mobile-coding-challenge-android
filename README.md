@@ -10,6 +10,9 @@ You will be building a simple two-screen podcasts app. A basic mockup is provide
 
 [![](https://i.imgur.com/yi8w1s8.png)](https://i.imgur.com/yi8w1s8.png)
 
+Screenshot of implementation
+[![](/screenshots/screen_1.png)](/screenshots/screen_1.png) [![](/screenshots/screen_2.png)](/screenshots/screen_2.png)
+
 #### Screen 1
 
 - [x] Show a list of podcasts using the endpoint provided below.
