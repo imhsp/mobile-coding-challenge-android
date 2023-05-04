@@ -11,7 +11,9 @@ You will be building a simple two-screen podcasts app. A basic mockup is provide
 [![](https://i.imgur.com/yi8w1s8.png)](https://i.imgur.com/yi8w1s8.png)
 
 Screenshot of implementation
-[![](/screenshots/screen_1.png)](/screenshots/screen_1.png) [![](/screenshots/screen_2.png)](/screenshots/screen_2.png)
+Screen 1             |  Screen 2
+:-------------------------:|:-------------------------:
+![](/screenshots/screen_1.png)(/screenshots/screen_1.png) | ![](/screenshots/screen_2.png)(/screenshots/screen_2.png)
 
 #### Screen 1
 
